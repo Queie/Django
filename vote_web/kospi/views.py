@@ -10,7 +10,6 @@ def text(request):
 	return HttpResponse("kospi")
 
 
-
 # Basic Line Chart
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
@@ -18,16 +17,16 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 #def line_chart(request):
 def index(request):
 
-	df = pd.read_csv('sam.csv')
-	fig,ax1=plt.subplots(1,1,dpi=100)
-	plt.plot(df.Volume, 'r')
-	plt.plot(df.Close, 'b')
+    df = pd.read_csv('sam.csv')
+    fig,ax1=plt.subplots(1,1,dpi=100)
+    plt.plot(df.Volume, 'r')
+    plt.plot(df.Close, 'b')
 
-	# django 로 그림을 출력
-	canvas=FigureCanvas(fig)
-	response=HttpResponse(content_type='image/png')
-	canvas.print_png(response)
-	return response
+    # django 로 그림을 출력
+    canvas=FigureCanvas(fig)
+    response=HttpResponse(content_type='image/png')
+    canvas.print_png(response)
+    return response
 
 
 
@@ -37,13 +36,13 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
 def heatmap(request):
-	df = pd.read_csv('samsung.csv')
-	fig,ax1=plt.subplots(1,1,dpi=400)
-	sns.heatmap(df,cmap='RdBu_r',cbar=False, ax=ax1)
-	canvas=FigureCanvas(fig)
-	response=HttpResponse(content_type='image/png')
-	canvas.print_png(response)
-	return response
+    df = pd.read_csv('samsung.csv')
+    fig,ax1=plt.subplots(1,1,dpi=400)
+    sns.heatmap(df,cmap='RdBu_r',cbar=False, ax=ax1)
+    canvas=FigureCanvas(fig)
+    response=HttpResponse(content_type='image/png')
+    canvas.print_png(response)
+    return response
 
 
 
@@ -78,7 +77,6 @@ from matplotlib.figure import Figure
 from matplotlib.dates import DateFormatter
 
 def date_chart(request):
-
     fig=Figure()
     ax=fig.add_subplot(111)
     x=[]
