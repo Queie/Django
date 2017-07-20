@@ -6,7 +6,7 @@ from kospi import views
 
 
 # HTML 에서 namespace로 연결 ( layout.html )
-app_name = 'kospi'
+# app_name = 'kospi'
 
 
 urlpatterns = [

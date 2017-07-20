@@ -6,7 +6,7 @@ from elections import views
 
 
 # HTML 에서 namespace로 연결 ( layout.html )
-app_name = 'elections'
+# app_name = 'elections'
 
 
 urlpatterns = [

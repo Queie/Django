@@ -77,6 +77,7 @@ from matplotlib.figure import Figure
 from matplotlib.dates import DateFormatter
 
 def date_chart(request):
+
     fig=Figure()
     ax=fig.add_subplot(111)
     x=[]
