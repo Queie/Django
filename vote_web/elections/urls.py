@@ -15,8 +15,8 @@ urlpatterns = [
 
     # <area> 객체를 views.areas 에 전달
     # <area>[가-힣] : <area> 는 한글객체만 가능
-    url(r'^areas/(?P<area>[가-힣]+)/$', views.areas) ,
-    url(r'^areas/(?P<area>[가-힣]+)/results$', views.results) ,
+    url(r'^areas/(?P<area>[가-힣]+)/$', views.areas, name='areas') ,
+    url(r'^areas/(?P<area>[가-힣]+)/results$', views.results, name = 'results') ,
 
     # <poll_id> 는 '\d+' 숫자만 가능
     url(r'^polls/(?P<poll_id>\d+)/$', views.polls),

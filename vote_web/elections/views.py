@@ -1,8 +1,10 @@
 from django.shortcuts import render , get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound, Http404
 # Create your views here.
-from django.db.models import Sum
 from elections.models import Candidate , Poll, Choice # models.py 객체를 활용한다
+from django.db.models import Sum
+from django.core.urlresolvers import reverse
+
 
 import datetime
 
@@ -76,7 +78,13 @@ def polls(request, poll_id):
 
 	# HttpResponseRedirect() 함수 처리결과를
 	# urls.py (/areas/{}/results/$ --> result() : 종속함수) 로 다른함수에 전달
-	return HttpResponseRedirect("/areas/{}/results".format(poll.area))
+	#return HttpResponseRedirect("/areas/{}/results".format(poll.area))
+
+	# namespace 문법을 일동일하게 함수에도 활용 (이게 더 적합하다!!)
+	# args = ( ,) 꼭 tuple 로 지정!!!!
+	# (안그러면 낱말 단위로 쪼개더라... )
+	return HttpResponseRedirect(reverse('elections:results', args=(poll.area,)))
+
 
 
 # 투표결과를 확률로 연산하는 모듈

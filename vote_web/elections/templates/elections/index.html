@@ -21,6 +21,12 @@
         <tr>
             <td>{{candidate.name}}</td>
             <td>{{candidate.introduction}}</td>
+
+                <!--
+                1. 단순 경로의 변경
+                /areas/사용자객체 : 에 해당되는 urls.py의 함수를 실행
+                [ url(r'^areas/(?P<area>[가-힣]+)/$', views.areas) ] -->
+
             <td><a href="areas/{{candidate.area}}/"> {{candidate.area}} </a> </td>
             <td>기호 {{candidate.party_number}}번</td>
         </tr>

@@ -22,20 +22,24 @@
         <tbody>
         {% for candidate in candidates %}
         <tr>
-            <!-- for 문의 출력 객체 중 1개가 잘못되니까
-                 아래 3가지가 전부 출력이 안되더라 -ㅜ.. -->
+            <!-- for 문의 출력 객체 중 1개만 잘못되어도
+                 3가지가 전부 출력시 오류로 먹통 (컴파일언어의 특징 ) -->
             <td> {{candidate.name}}</td>
             <td> {{candidate.introduction}} </td>
             <td> 기호 {{candidate.party_number}} 번 </td>
             <td>
 
-            <!-- from 객체 Post ==> urls.py 의 /polls/{{pool.id}} 관련 함수로 연결 -->
+                <!--
+                2. Form 입력값을 갖고 경로를 변경
+                /areas/사용자객체 : 에 해당되는 urls.py의 함수를 실행
 
-            <!-- if) = "/polls/{{poll.id}}" 는 오류발생
-                     "APPEND_SLASH" 로 URL 끝 슬래시('/')는 장고의 옵션이다.(필수!!)
-                     출처 : http://codingdojang.com/scode/377          -->
+                주의!) = "/polls/{{poll.id}}" 는 오류발생
+                       "APPEND_SLASH" 로 URL 끝 슬래시('/')는 장고 필수옵션
+                     출처 : http://codingdojang.com/scode/377 -->
+
             <form action = "/polls/{{poll.id}}/" method="post">
-            {% csrf_token %}  <!-- server로 Post를 위해 꼭 필요한 암호화 -->
+            <!-- server로 Post 객체를 전달시 꼭 암호화가 필요 -->
+            {% csrf_token %}
             <button name="choice" value="{{candidate.id}}">선택</button>
             </form>
             </td>
@@ -43,8 +47,10 @@
         {% endfor %}
         </tbody>
     </table>
+
+<!-- 조건값이 없을 떄 -->
 {% else %}
-여론조사가 없습니다.  <!-- 조건값이 없을 떄 -->
+여론조사가 없습니다.
 {% endif %}
 </div>
 
