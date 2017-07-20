@@ -1,0 +1,52 @@
+{% extends "elections/layout.html" %}
+
+<!--<html lang="en"><head>..</head><body>-->
+
+{% block title %} {{area}} {% endblock title %}
+
+{% block content %}
+<div class="container">
+<h1>{{area}}</h1>
+<br>
+    <!-- poll 객체에 유효한 내용이 포함된 경우 -->
+    {% if poll %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td><B>이름</B></td>
+            <td><B>소개</B></td>
+            <td><B>기호</B></td>
+            <td><B>지지하기</B></td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for candidate in candidates %}
+        <tr>
+            <!-- for 문의 출력 객체 중 1개가 잘못되니까
+                 아래 3가지가 전부 출력이 안되더라 -ㅜ.. -->
+            <td> {{candidate.name}}</td>
+            <td> {{candidate.introduction}} </td>
+            <td> 기호 {{candidate.party_number}} 번 </td>
+            <td>
+
+            <!-- from 객체 Post ==> urls.py 의 /polls/{{pool.id}} 관련 함수로 연결 -->
+
+            <!-- if) = "/polls/{{poll.id}}" 는 오류발생
+                     "APPEND_SLASH" 로 URL 끝 슬래시('/')는 장고의 옵션이다.(필수!!)
+                     출처 : http://codingdojang.com/scode/377          -->
+            <form action = "/polls/{{poll.id}}/" method="post">
+            {% csrf_token %}  <!-- server로 Post를 위해 꼭 필요한 암호화 -->
+            <button name="choice" value="{{candidate.id}}">선택</button>
+            </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+여론조사가 없습니다.  <!-- 조건값이 없을 떄 -->
+{% endif %}
+</div>
+
+
+{% endblock content %}

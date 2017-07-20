@@ -1,0 +1,45 @@
+{% extends "elections/layout.html" %}
+
+{% block title %}
+{{area}} 여론조사 결과
+{% endblock %}
+
+
+<!-- C:\Code\mysite\elections\templates\elections\result.html
+<!DOCTYPE html><html lang="en"><head>..< /head> -->
+
+<!-- <body> 위치에 본문을 상속 -->
+{% block content %}
+<div class="container">
+<h1>{{area}} 투표결과 </h1>
+<br>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <td> 설문기간 </td>
+        {% for candidate in candidates %}
+        <td><B>{{candidate.name}}</B></td>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for result in poll_results %}
+    <tr>
+        <!-- result['start_date'] 객체  중 year만 호출 -->
+        <!-- {{result.start_date.date}} : 날짜 정보를 모두 호출 -->
+
+        <td>{{result.start_date.year}}/ {{result.start_date.month}}/
+            {{result.start_date.day}}~
+            {{result.end_date.year}}/ {{result.end_date.month}}/
+            {{result.end_date.day}}</td>
+
+        <!-- result.rates 딕셔너리를 호출 <= result = {'rates': value} -->
+        {% for rate in result.rates %}
+        <td> {{rate}}%</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    <tbody>
+</table>
+</div>
+{% endblock %}
