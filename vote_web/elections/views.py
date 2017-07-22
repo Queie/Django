@@ -3,8 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 # Create your views here.
 from elections.models import Candidate , Poll, Choice # models.py 객체를 활용한다
 from django.db.models import Sum
-from django.core.urlresolvers import reverse
 
+from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy # reverse()보다 안정적 로딩
 
 import datetime
 

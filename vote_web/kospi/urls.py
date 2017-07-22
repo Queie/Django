@@ -10,6 +10,6 @@ from kospi import views
 
 
 urlpatterns = [
-    url(r'^kospi/$', views.index, name = 'chart'),
+    url(r'^', views.index, name = 'chart'),
     # '.' : 모든객체 가능 (/도 포함해서 1개 객체로 인식한다)
 ]
