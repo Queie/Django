@@ -10,8 +10,8 @@ STATIC_URL = '/static/'       # Static files (CSS, JavaScript, Images)
 # Gmail SMTP 서버 활용
 # https://www.codingforentrepreneurs.com/blog/use-gmail-for-email-in-django/
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'muyongcctv@gmail.com'
-EMAIL_HOST_PASSWORD = 'homecctv$$'
+EMAIL_HOST_USER = 'email@gmail.com'
+EMAIL_HOST_PASSWORD = 'password'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
