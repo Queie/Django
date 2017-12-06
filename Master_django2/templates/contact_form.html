@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Us</title>
+</head>
+<body>
+
+	<h1>연락처</h1>
+
+	{% if form.errors %}
+		<p style="color:red;"> {{errors}} 오류{{form.errors|pluralize}} 를(을) 수정하세요</p>
+	{% endif %}
+
+	<form action="" method="post">
+		<table>
+			{{form.as_table}}
+		</table>
+		{% csrf_token %}
+		<input type="submit" name="Submit">
+	</form>
+
+</body>
+</html>
