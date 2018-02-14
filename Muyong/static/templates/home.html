@@ -1,0 +1,20 @@
+{% extends "base.html" %}    <!-- base.html을 상속  -->
+
+
+{% block title %}
+Main Page
+{% endblock title %}
+
+{% block content %}
+
+{# 이미지 추가 https://docs.djangoproject.com/en/2.0/howto/static-files/ --> #}
+{% load static %}
+<img src="{% static 'media/foods2.jpg' %}" width='400' alt="My image"/>
+
+
+<header>
+</header>
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
