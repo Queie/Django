@@ -1,7 +1,6 @@
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = 'kv0^zo$r0nam!0u=n-g%dgamkvn=ip3p^1s8xi0^62xlf3cl-8'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 ROOT_URLCONF = 'server.urls'  # urls.py 에서 링크를 찾는다
