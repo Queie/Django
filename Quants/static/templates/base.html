@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>
+  {% block title %}
+  Quants
+  {% endblock title %}
+</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href='{% static "css/w3.css" %}'/>
+<!--    <link rel="stylesheet" href="W3.CSS%20Template_files/css.css">
+    <link rel="stylesheet" href="W3.CSS%20Template_files/font-awesome.css">-->
+    <style>
+      body,
+      h1 {font-family: "Raleway", Arial, sans-serif}
+      h1 {letter-spacing: 6px}
+      .w3-row-padding img {margin-bottom: 12px}
+    </style>
+</head>
+
+<body>
+  <div class="w3-padding">
+      <div class="w3-bar w3-border">
+          <a href="#" class="w3-bar-item w3-button w3-light-grey">Home</a>
+          <a href="#" class="w3-bar-item w3-button">Portfolio</a>
+          <a href="#" class="w3-bar-item w3-button">Contact</a>
+          <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small">Weddings</a> -->
+      </div>
+  </div>
+
+<body>
+
+
+    {% block content %}
+  {% endblock content %}
+</body>
+</html>
+
+
+

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+<html>
+<head>
+	<title>Search</title>
+</head>
+
+<body>
+	{% block content %}
+
+	<p>겸색내용  : <strong>{{query}}</strong></p>
+
+	{% if books %}
+		<p>결과갯수 : {{books|length}}
+		 result{{books|pluralize}}.  </p>
+		<ul>
+			{% for book in books %}
+            <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>검색조건과 일치하는 자료가 없습니다.</p>
+	{% endif %}
+
+	{% endblock content %}
+</body>
+</html>

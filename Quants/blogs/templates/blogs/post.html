@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+{% endblock %}
+
+
+{% block title %}
+{% endblock %}
+
+
+{% block content %}
+{% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{{ post.content|safe }}    {# |safe : filter 로 html을 바로 해결 #}
+{% endblock %}
+
+
+{% block footer %}
+{% endblock footer %}

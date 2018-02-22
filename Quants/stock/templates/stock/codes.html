@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+{% endblock %}
+
+
+{% block title %}
+{% endblock %}
+
+
+{% block content %}
+{% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{{codes.name}}
+{{codes.code}}
+
+{% for i in temp %}
+	{{i}}
+{% endfor %}
+
+{{table|safe}}
+
+{{codes.code_gogl}}
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock footer %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+<html>
+<head>
+	<title>
+	{% block title %}
+	Search
+	{% endblock title %}
+	</title>
+</head>
+
+<body>
+{% block content %}
+	{% if errors %}  <!-- 오류 발생시 : 오류 메세지를 화면에 추가  -->
+		<ul>
+			{% for error in errors %}
+			<p style="color:red;">{{error}}</p>
+			{% endfor %}
+	{% endif %}
+
+	<form action="" method="get">
+<!-- 	<form action="/search/" method="get"> -->
+		<!-- 변수 'q'를 Get 방식으로 전달 -->
+		<input type="text" name="q">
+		<input type="submit" value="Search">
+	</form>
+{% endblock content %}
+
+</body>
+</html>
