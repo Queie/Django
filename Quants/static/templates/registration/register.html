@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    registering_site
+{% endblock title %}
+
+{% load static %}
+{% block content %}
+<h1>새로운 사용자를 등록하세요 </h1>
+
+<form method="post" action=".">{% csrf_token %}
+
+	{% if form.errors %}
+	<p>오류가 발생하였습니다</p>
+	{% endif %}
+
+	<p>이름을 입력하세요</p>
+
+	<fieldset>
+		<div>{{form.username.label_tag}}{{form.username}}<br>
+			{{form.password1.label_tag}}{{form.password1}}<br>  {# password1 비번입력 #}
+		{{form.password2.label_tag}}{{form.password2}}</div>    {# password2 비번확인입력 #}
+	</fieldset>
+
+	<input type="submit" value="등록"/>
+</form>
+
+{% endblock content %}

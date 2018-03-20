@@ -26,7 +26,8 @@ def index(request):
 # 카테고리 페이지 설정
 def category(request, slug):
 	category = get_object_or_404(Category, slug=slug)
-	post = Blog.objects.filter(category=category)
+	print(category)                                  # __str__ 선언된  title 컬럼이 출력
+	post = Blog.objects.filter(category=category)    # 외래키 연결 id로 필터링
 	content = {'categories':category, 'posts':post}
 	return render(request, 'blogs/category.html', content)
 

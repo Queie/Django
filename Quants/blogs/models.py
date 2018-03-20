@@ -21,18 +21,23 @@ class Category(models.Model):
 # from martor.models import MartorField
 from ckeditor.fields import RichTextField
 
+
 class Blog(models.Model):
-	# <외래키 연결> (1) on_delete = models.PROTECT (외래키 독립)
-	#               (2) on_delete = models.CASCADE (외래키 의존)
+
+	# <외래키 연결>  (1) on_delete = models.PROTECT (외래키 독립)
+	#                (2) on_delete = models.CASCADE (외래키 의존)
 	# author   = models.ForeignKey('auth.User',      on_delete=models.CASCADE )
+
 	category = models.ForeignKey('blogs.Category', on_delete=models.CASCADE)
 	title    = models.CharField(max_length=100, unique=True)
 	content  = RichTextField()  # models.TextField()
 	posted   = models.DateTimeField(db_index=True, auto_now_add=True)
-	                                         # (1) auto_now_add : “처음생성"시간
-											 # (2) auto_now     : "저장"시간
+	                               # (1) auto_now_add : “처음생성"시간
+								   # (2) auto_now     : "저장"시간
+
 	slug     = models.SlugField(allow_unicode=True, unique=True,
 							    max_length=100,  help_text='제목을 입력하세요')
+
 	class Meta:
 		ordering = ('-posted',) # 내림차순 정렬 (최신날짜 우선)
 

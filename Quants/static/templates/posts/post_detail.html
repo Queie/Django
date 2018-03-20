@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}
+    post_detail
+{% endblock title %}
+
+
+
+{% block content %}
+    {% load static %}
+
+<h2>{{object.title}}</h2>
+{{object.content|linebreaks}}
+<p> {{ object.modify_date | date:"j F Y" }}</p>
+
+
+<div>
+	<b>TAGs:</b>
+	{% load tagging_tags %}
+	{% tags_for_object  object  as  tags %}
+	{% for tag in tags %}
+		<a href="{% url 'post:tag_list' tag.name %}">{{tag.name}}</a>
+	{% endfor %}
+</div>
+{% endblock content %}

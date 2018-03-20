@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    album_detail
+{% endblock title %}
+
+{% block content %}
+    {% load static %}
+
+    <h2 style="display:inline">{{object.name}}</h2>
+    &emsp;<b><i>{{object.description}}</i></b>
+    <hr/>
+
+    <div>
+    	{% for photo in object.photo_set.all %}
+    	<div>
+    		<a href="{{photo.get_url}}">
+    			<img src="{{photo.image.thumb_url}}"/></a>
+    		<li>{{photo.title}}</li>
+    		<li>{{photo.upload_date}}</li>
+    	</div>
+    	{% endfor %}
+    </div>
+{% endblock content %}

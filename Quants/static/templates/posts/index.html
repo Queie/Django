@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Posts
+{% endblock title %}
+
+
+
+{% block content %}
+
+{% load static %}
+<h1> Posts List </h1>
+
+
+{% for post in posts %}
+    <h2> <a href = '{{post.get_url}}'>{{post.title}}</a></h2>
+    {# 필터를 사용시 칸을 띄어야 오류가 덜 발생 #}
+    {{ post.modify_date | date:"N d, Y" }}
+    <p>{{post.description}}</p>
+{% endfor %}
+<br>
+
+{% endblock content %}

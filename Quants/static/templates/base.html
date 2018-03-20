@@ -26,18 +26,43 @@
 <body>
   <div class="w3-padding">
       <div class="w3-bar w3-border">
-          <a href="#" class="w3-bar-item w3-button w3-light-grey">Home</a>
-          <a href="#" class="w3-bar-item w3-button">Portfolio</a>
-          <a href="#" class="w3-bar-item w3-button">Contact</a>
-          <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small">Weddings</a> -->
+          <a href="{% url 'home' %}" class="w3-bar-item w3-button w3-light-grey">Home</a>
+          <a href="{% url 'blog:index' %}" class="w3-bar-item w3-button">Blog</a>
+          <a href="{% url 'photo:index' %}" class="w3-bar-item w3-button">Photo</a>
+          <a href="{% url 'post:index' %}" class="w3-bar-item w3-button">Post</a>
+          <li class="w3-bar-item w3-button">Post&bigtriangledown;
+            <ul>
+                <li><a href="{% url 'post:add' %}">add</a></li>
+                <li><a href="{% url 'post:change' %}">change</a></li>
+                <li><a href="{# % url 'post:delete' % #}">delete</a></li>
+            </ul></li>
+          <a href="{% url 'post:search' %}" class="w3-bar-item w3-button">Search</a>
+
+
+          {# https://wayhome25.github.io/django/2017/03/14/django-07-kilogram-02-auth/ #}
+          {# path(r'^accounts/', include('django.contrib.auth.urls')) 에 의해 자동구현 #}
+          {% if user.is_active %}
+          <div class="w3-bar-item w3-button w3-hide-small">
+          <h4>Hi!,
+            <strong>{% firstof user.get_short_name  user.get_username %}</strong>
+            <a href="{% url 'password_change' %}">Change Password</a>
+            <a href="{% url 'logout' %}">LogOut</a></h4></div>
+
+          {% else %}
+          <div class="w3-bar-item w3-button w3-hide-small">
+          <h4>Welcome
+            <a href="{% url 'login' %}">로그인</a>
+            <a href="{% url 'register' %}">등록</a></h4></div>
+          {% endif %}
+
       </div>
   </div>
 
 <body>
 
+{% block content %}
+{% endblock content %}
 
-    {% block content %}
-  {% endblock content %}
 </body>
 </html>
 

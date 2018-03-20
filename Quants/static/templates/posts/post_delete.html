@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+    delete_confirm_delete
+{% endblock title %}
+
+{% block content %}
+    <h1>Post Delete -- {{user}}</h1>
+
+    <form action="" method="post">{% csrf_token %}
+    	<p> 삭제할 내용이 맞습니까 "{{object.description}}"?</p>
+    	<input type="submit" name="전송">
+    </form>
+
+{% endblock content %}

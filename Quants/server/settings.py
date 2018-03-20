@@ -1,18 +1,23 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SECRET_KEY = 'j*6-2j6hpvx^$(1sn6%%!df2ixe822wd!x#hm0s@ew$cnydqtr'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Gmail SMTP : www.codingforentrepreneurs.com/blog/use-gmail-for-email-in-django/
-EMAIL_HOST = '.gmail.com'
-EMAIL_HOST_USER = 'gmail.com'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'muyongcctv@gmail.com'
+EMAIL_HOST_PASSWORD = 'homecctv$$'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+
+MEDIA_URL = '/static/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+LOGIN_REDIRECT_URL = '/'   # '/accounts/login/' 기본 URL 경로
 
 # CKEditor settings
 # https://github.com/django-ckeditor/django-ckeditor
@@ -29,7 +34,7 @@ INSTALLED_APPS = [
     'ckeditor',          # HTML Editor
     'ckeditor_uploader', # HTML Editor Widget
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth',  # 사용자 관리
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -37,7 +42,11 @@ INSTALLED_APPS = [
     # 'rest_framework',
     'blogs.apps.BlogsConfig',
     'stock.apps.StockConfig',
+    'posts.apps.PostsConfig',
+    'photo.apps.PhotoConfig',
+    'tagging.apps.TaggingConfig',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

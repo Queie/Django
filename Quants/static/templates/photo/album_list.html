@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Album_list
+{% endblock title %}
+
+
+Django 제넉릭뷰 활용
+table 이름으로 _list, _detail 을 자동으로 연결
+
+
+{% block content %}
+
+photo test
+
+{% for item in object_list %}
+	<div>
+	<h2 style="display:inline"><a href="{% url 'photo:album_detail'  item.id %}">
+	{{item.name}}</a></h2>&emsp;
+	<b><i>{{item.description}}</i></b></div>
+	<hr/>
+
+	<div>
+	{% for photo in item.photo_set.all|slice:":5" %}
+	<div>
+		<a href="{{photo.get_url}}">
+			<img src="{{photo.image.thumb_url}}"/></a></div>
+	{% endfor %}
+{% endfor %}
+
+{% endblock content %}
