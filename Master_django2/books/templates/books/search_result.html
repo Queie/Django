@@ -4,6 +4,9 @@
 </head>
 
 <body>
+	{% if error %}
+		<p style="color: red;">
+			검색단어를 20자 이내로 입력해 주세요
 	<p>겸색내용  : <strong>{{query}}</strong></p>
 
 	{% if books %}

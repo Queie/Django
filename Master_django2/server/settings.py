@@ -39,9 +39,7 @@ MIDDLEWARE = [
 
 
 TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #'DIRS': [],  # 초기값
+    {   'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [ os.path.join(BASE_DIR, 'templates') ], # Master Template 경로 지정
         'APP_DIRS': True,                                # 개별 APP의 'templates'를 확인
         'OPTIONS': {
@@ -49,8 +47,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],},},]
+                'django.contrib.messages.context_processors.messages',],},},]
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
